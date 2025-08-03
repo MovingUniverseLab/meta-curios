@@ -46,7 +46,7 @@ This is used for generating SDK or Linux image for the Xiphos [Q7S](https://xiph
   IMAGE_INSTALL_append = "cfitsio"
   ```
   **Note:**   
-  (1) To build the image/SDK for "q7s-revc" board, you need to set `MACHINE ?= "q7s-revc"`;  
+  (1) To build the image/SDK for "q7s-revc" board (lab Xiphos), you need to set `MACHINE ?= "q7s-revc". Use q7s-revb for the flight model`;  
   (2) To install the SDK on a ARM64 platform, you need to add `SDKMACHINE = "aarch64"` to the `conf/local`.conf; if the SDK is for a x86-64 platform, you need to add `SDKMACHINE = "x86_64"`;  
   (3) There is a bug in `yocto-xiphos-v2021.1`(**v3.3.0 or earlier**), which pops up error messages during SDK generation. To fix the error, you need to add the following lines to the `conf/local/conf`:
   ```
