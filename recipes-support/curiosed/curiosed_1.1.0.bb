@@ -45,7 +45,9 @@ do_install:append () {
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
 
     # Install StarSpec flightsim files
-    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/inspire_sat/* ${D}${sysconfdir}/inspire_sat/
+    #cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/inspire_sat/* ${D}${sysconfdir}/inspire_sat/
+    # Note the above line references in directory that does not exist. Also the output directory /inspire_sat may be incorrect
+    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/inspire_sat/
 
     # Install Payload_Control service
     # Move over systemd files
