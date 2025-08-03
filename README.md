@@ -1,6 +1,5 @@
 # meta-curios usage
-This is used for generating SDK or Linux image for the Xiphos [Q7S](https://xiphos.com/product-details/q7) board for the CuRIOS project. Q7S is the space-qualified version of Q7, but note that Q7 is revc1 whereas Q7S is revb. The lab Xiphos is Q7. The flight Xiphos is Q7S.   
-Generally, the recipes in this layer can also be used for other yocto projects, which requires these software to be pre-installed.
+This is used for generating SDK or Linux image for the Xiphos [Q7S](https://xiphos.com/product-details/q7) board for the CuRIOS project. Q7S is the space-qualified version of Q7, but note that Q7 is revc1 whereas Q7S is revb. The lab Xiphos is Q7. The flight Xiphos is Q7S. Generally, the recipes in this layer can also be used for other yocto projects, which requires these software packages to be pre-installed.
 ## Generate SDK
 1. clone the Xiphos's yocto repo
   ```
