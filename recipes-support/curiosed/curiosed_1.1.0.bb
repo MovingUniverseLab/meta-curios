@@ -4,6 +4,9 @@ LICENSE = "CLOSED"
 
 DEPENDS = "zlib bzip2 curl openssl libusb cfitsio monit"
 
+# This variable must be set to bash for the inspiresat .sh files
+RDEPENDS_${PN} += "bash"
+
 # Overrides
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
