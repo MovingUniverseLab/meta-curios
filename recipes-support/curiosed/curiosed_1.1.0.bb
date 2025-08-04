@@ -37,6 +37,9 @@ do_install:append () {
 
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Imaging_Control ${D}${bindir}
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Payload_Control ${D}${bindir}
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Pointing_Control ${D}${bindir}
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
@@ -45,9 +48,7 @@ do_install:append () {
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
 
     # Install StarSpec flightsim files
-    #cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/inspire_sat/* ${D}${sysconfdir}/inspire_sat/
-    # Note the above line references in directory that does not exist. Also the output directory /inspire_sat may be incorrect
-    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/inspire_sat/
+    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/flightsim/
 
     # Install Payload_Control service
     # Move over systemd files
