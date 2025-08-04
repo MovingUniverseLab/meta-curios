@@ -37,9 +37,6 @@ do_install:append () {
 
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Imaging_Control ${D}${bindir}
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Payload_Control ${D}${bindir}
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/bin/Pointing_Control ${D}${bindir}
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
