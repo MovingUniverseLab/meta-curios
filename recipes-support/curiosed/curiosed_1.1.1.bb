@@ -17,10 +17,11 @@ inherit autotools-brokensep pkgconfig systemd
 LIC_FILES_CHKSUM = ""
 #LIC_FILES_CHKSUM = "file://licenses/License.txt;md5=77856e8a5492e2119200b3401a8e7966"
 
-SRC_URI = "file:///home/curios/curios_fsw/*"
-#SRC_URI = "git@github.com:MovingUniverseLab/curios_fsw.git/*"    
+#SRC_URI = "file:///home/curios/curios_fsw/*"
+SRC_URI = "git@github.com:MovingUniverseLab/curios_fsw.git;branch=main"    
 
-S = "${WORKDIR}/home/curios/curios_fsw"
+#S = "${WORKDIR}/home/curios/curios_fsw"
+S = "${WORKDIR}/git"
 
 SYSTEM_AUTO_ENABLE = "enable"
 SYSTEM_SERVICE:${PN} = "curiosed_control.service"
