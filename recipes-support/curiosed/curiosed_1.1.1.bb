@@ -17,11 +17,9 @@ inherit autotools-brokensep pkgconfig systemd
 LIC_FILES_CHKSUM = ""
 #LIC_FILES_CHKSUM = "file://licenses/License.txt;md5=77856e8a5492e2119200b3401a8e7966"
 
-#SRC_URI = "file:///home/curios/curios_fsw/*"
-SRC_URI = "git@github.com:MovingUniverseLab/curios_fsw.git;branch=dev"
+SRC_URI = "file:///home/curios/curios_fsw/*"
 
-#S = "${WORKDIR}/home/curios/curios_fsw"
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/home/curios/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
 SYSTEM_SERVICE:${PN} = "curiosed_control.service"
@@ -32,13 +30,11 @@ do_install:append () {
     # Make directories
     install -d ${D}${bindir}
     install -d ${D}${libdir}
-    install -d ${D}/opt
     install -d ${D}/data
     install -d ${D}/home/root
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
-    install -d ${D}${sysconfdir}/inspire_sat
-    install -d ${D}${sysconfdir}/flightsim
+    install -d ${D}${sysconfdir}/inspiresat
 #    install -d ${D}${sysconfdir}/dropbear
 
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
@@ -50,8 +46,9 @@ do_install:append () {
 #    cp ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
 
-    # Install StarSpec flightsim files
-    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/flightsim/
+    # Install StarSpec config files
+#    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/flightsim/
+    cp -r ${WORKDIR}/home/curios/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
 
     # Install Payload_Control service
     # Move over systemd files
@@ -61,7 +58,6 @@ do_install:append () {
 }
 
 FILES:${PN} += " \
-  /opt \
   /data \
   ${bindir}/* \
   ${libdir}/* \
@@ -69,7 +65,7 @@ FILES:${PN} += " \
   /home/root \
   /home/root/.profile \
   /home/root/* \
-  ${sysconfdir}/flightsim/* \
+  ${sysconfdir}/inspiresat/* \
   ${sysconfdir} \
   ${sysconfdir}/systemd \
   ${sysconfdir}/systemd/network \
