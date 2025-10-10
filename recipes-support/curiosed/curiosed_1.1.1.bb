@@ -1,4 +1,4 @@
-DESCRIPTION = "Flight Software for CuRIOS-ED"
+DESCRIPTION = "Flight Software for CuRIOS-ED version 2.0"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -22,7 +22,7 @@ SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_confi
 S = "${WORKDIR}/home/curios/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
-SYSTEM_SERVICE:${PN} = "curiosed_control.service"
+SYSTEM_SERVICE:${PN} = "curiosed_control.service" "health-update.service"
 
 inherit cmake
 
@@ -46,13 +46,13 @@ do_install:append () {
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
 
     # Install StarSpec config files
-#    cp -r ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/flightsim/* ${D}${sysconfdir}/flightsim/
     cp -r ${WORKDIR}/home/curios/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
 
-    # Install Payload_Control service
+    # Install Payload_Control and Health_Update service
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
     
 }
 
