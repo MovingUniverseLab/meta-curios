@@ -1,4 +1,4 @@
-DESCRIPTION = "Flight Software for CuRIOS-ED version 2.0"
+DESCRIPTION = "Flight Software for CuRIOS-ED version 2.1"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -40,6 +40,9 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
+    # Copy the health script to /usr/bin
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
+
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
 #   install -m 0600 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/dropbear/dropbear_rsa_host_key ${D}${sysconfdir}/dropbear/
@@ -52,7 +55,6 @@ do_install:append () {
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/src/system_scripts/Health_Update.sh ${D}${sysconfdir}/usr/bin/
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
     
 }
