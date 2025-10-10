@@ -44,7 +44,7 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
 #   install -m 0600 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/dropbear/dropbear_rsa_host_key ${D}${sysconfdir}/dropbear/
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
-
+    
     # Install StarSpec config files
     cp -r ${WORKDIR}/home/curios/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
 
