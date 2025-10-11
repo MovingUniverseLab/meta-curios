@@ -41,7 +41,7 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
     # Copy the health script to /usr/bin
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
@@ -54,8 +54,8 @@ do_install:append () {
     # Install Payload_Control and Health_Update service
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
+    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
     
 }
 
