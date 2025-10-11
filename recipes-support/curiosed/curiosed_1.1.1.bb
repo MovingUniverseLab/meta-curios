@@ -1,4 +1,4 @@
-DESCRIPTION = "Flight Software for CuRIOS-ED version 2.1"
+DESCRIPTION = "Flight Software for CuRIOS-ED version 2.2"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -54,8 +54,8 @@ do_install:append () {
     # Install Payload_Control and Health_Update service
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
     
 }
 
