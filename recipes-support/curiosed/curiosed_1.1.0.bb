@@ -22,7 +22,7 @@ SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_confi
 S = "${WORKDIR}/home/curios/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
-SYSTEM_SERVICE:${PN} = "curiosed_control.service" "health-update-sh.service"
+SYSTEM_SERVICE:${PN} = "curiosed_control.service" "health-update.service"
 
 inherit cmake
 
