@@ -55,8 +55,8 @@ do_install:append () {
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/
-    
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
 }
 
 FILES:${PN} += " \
