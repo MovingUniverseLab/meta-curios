@@ -15,14 +15,9 @@ inherit autotools-brokensep pkgconfig systemd
 
 #PR = "r1"
 LIC_FILES_CHKSUM = ""
-#LIC_FILES_CHKSUM = "file://licenses/License.txt;md5=77856e8a5492e2119200b3401a8e7966"
 
 SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
 
-#SRC_URI = " \
-#    git@github.com:MovingUniverseLab/curios_fsw.git;branch=Steve_CuRIOS;protocol=ssh \
-#    git@github.com:StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=ssh \
-"
 S = "${WORKDIR}/home/curios/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
@@ -39,7 +34,6 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
     install -d ${D}${sysconfdir}/inspiresat
-#    install -d ${D}${sysconfdir}/dropbear
 
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
@@ -49,7 +43,6 @@ do_install:append () {
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
-#   install -m 0600 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/dropbear/dropbear_rsa_host_key ${D}${sysconfdir}/dropbear/
     install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
     
     # Install StarSpec config files
