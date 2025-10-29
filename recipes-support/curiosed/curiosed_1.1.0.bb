@@ -19,8 +19,8 @@ LIC_FILES_CHKSUM = ""
 
 #SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
 SRC_URI = " \
-    git://github.com/curios-lab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https \
-    git://github.com/curios-lab/inspiresat_config.git;branch=master;protocol=https \
+    git://github.com/curios-lab/curios_fsw.git;branch=Steve_CuRIOS;protocol=ssh \
+    git://github.com/curios-lab/inspiresat_config.git;branch=master;protocol=ssh \
 "
 S = "${WORKDIR}/home/curios/curios_fsw"
 
