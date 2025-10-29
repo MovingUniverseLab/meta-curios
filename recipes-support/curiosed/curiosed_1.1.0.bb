@@ -17,8 +17,11 @@ inherit autotools-brokensep pkgconfig systemd
 LIC_FILES_CHKSUM = ""
 #LIC_FILES_CHKSUM = "file://licenses/License.txt;md5=77856e8a5492e2119200b3401a8e7966"
 
-SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
-
+#SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
+SRC_URI = " \
+    git://github.com/curios-lab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https \
+    git://github.com/curios-lab/inspiresat_config.git;branch=master;protocol=https \
+"
 S = "${WORKDIR}/home/curios/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
