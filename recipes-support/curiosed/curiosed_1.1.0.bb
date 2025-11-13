@@ -13,12 +13,22 @@ FILES_SOLIBSDEV = ""
 
 inherit autotools-brokensep pkgconfig systemd
 
+inherit features_check
+
 #PR = "r1"
 LIC_FILES_CHKSUM = ""
 
-SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
+#SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
+#S = "${WORKDIR}/home/curios/curios_fsw"
 
-S = "${WORKDIR}/home/curios/curios_fsw"
+SRC_URI = "\
+    git://github.com/MovingUniverseLab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https;destsuffix=curios_fsw \
+    git://github.com/StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=https;destsuffix=inspiresat_config \
+"
+
+SRCREV_default = "${AUTOREV}"
+
+S = "${WORKDIR}/curios_fsw"
 
 SYSTEM_AUTO_ENABLE = "enable"
 SYSTEM_SERVICE:${PN} = "curiosed_control.service" "health-update.service"
@@ -35,25 +45,25 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd/network
     install -d ${D}${sysconfdir}/inspiresat
 
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libatikcameras.so ${D}${libdir}
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/lib/libflightapi.a ${D}${libdir}
+    install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
+    install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
     # Copy the health script to /usr/bin
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
+    install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
 
     # Move over rootfs files
-    install -m 0755 ${WORKDIR}/home/curios/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
+    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
     
     # Install StarSpec config files
-    cp -r ${WORKDIR}/home/curios/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
+    cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
 
     # Install Payload_Control and Health_Update service
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
-    install -m 0644 ${WORKDIR}/home/curios/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/curiosed_control.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
 }
 
 FILES:${PN} += " \
