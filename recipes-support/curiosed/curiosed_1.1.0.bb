@@ -44,6 +44,7 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
     install -d ${D}${sysconfdir}/inspiresat
+    install -d ${D}${sysconfdir}/flightsim
 
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
@@ -57,6 +58,7 @@ do_install:append () {
     
     # Install StarSpec config files
     cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
+    cp -r ${WORKDIR}/curios_fsw/StarSpec/flightsim/* ${D}${sysconfdir}/flightsim/
 
     # Install Payload_Control and Health_Update service
     # Move over systemd files
