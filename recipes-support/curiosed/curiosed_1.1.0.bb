@@ -45,6 +45,7 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd/network
     install -d ${D}${sysconfdir}/inspiresat
     install -d ${D}${sysconfdir}/flightsim
+    install -d ${D}${sysconfdir}/cron.daily
 
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
@@ -56,6 +57,9 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
     
+    # Copy the journal clean script to the cron.daily directory
+    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/cron.daily/journal_clean.sh ${D}${sysconfdir}/cron.daily/
+
     # Install StarSpec config files
     cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
     cp -r ${WORKDIR}/curios_fsw/StarSpec/flightsim/* ${D}${sysconfdir}/flightsim/
@@ -63,10 +67,9 @@ do_install:append () {
     # Install Payload_Control and Health_Update service
     # Move over systemd files
     install -d ${D}${sysconfdir}/systemd/system
-#    install -d ${d}${sysconfdir}/systemd/cron.daily
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/payload-control.service ${D}${sysconfdir}/systemd/system/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
-#    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/cron.daily/journal_clean.sh ${D}${sysconfdir}/systemd/cron.daily/
+#    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/journald.conf ${D}${sysconfdir}/systemd/
 }
 
 FILES:${PN} += " \
