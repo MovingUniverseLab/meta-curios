@@ -59,6 +59,7 @@ do_install:append () {
     
     # Copy the journal clean script to the cron.daily directory
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/cron.daily/journal_clean.sh ${D}${sysconfdir}/cron.daily/
+#    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/journald.conf ${D}${sysconfdir}/systemd/
 
     # Install StarSpec config files
     cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
@@ -69,7 +70,6 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/payload-control.service ${D}${sysconfdir}/systemd/system/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
-#    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/journald.conf ${D}${sysconfdir}/systemd/
 }
 
 FILES:${PN} += " \
