@@ -1,4 +1,4 @@
-DESCRIPTION = "Flight Software for CuRIOS-ED version 2.3"
+DESCRIPTION = "Flight Software for CuRIOS-ED version 2.4"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -14,6 +14,7 @@ FILES_SOLIBSDEV = ""
 inherit autotools-brokensep pkgconfig systemd
 
 inherit features_check
+inherit systemd
 
 #PR = "r1"
 LIC_FILES_CHKSUM = ""
@@ -30,8 +31,8 @@ SRCREV_default = "${AUTOREV}"
 
 S = "${WORKDIR}/curios_fsw"
 
-SYSTEM_AUTO_ENABLE = "enable"
-SYSTEM_SERVICE:${PN} = "payload-control.service" "health-update-sh.service"
+SYSTEMD_SERVICE:${PN} = "payload-control.service health-update-sh.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 inherit cmake
 
@@ -59,7 +60,6 @@ do_install:append () {
     
     # Copy the journal clean script to the cron.daily directory
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/cron.daily/journal_clean.sh ${D}${sysconfdir}/cron.daily/
-#    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/journald.conf ${D}${sysconfdir}/systemd/
 
     # Install StarSpec config files
     cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
