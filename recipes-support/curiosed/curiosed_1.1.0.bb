@@ -51,6 +51,9 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
+    # Add file with version information to record the build information
+    echo "Image Version: ${DISTRO_VERSION}" >> ${D}/home/root/version_info.txt
+
     # Copy the health script to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
 
