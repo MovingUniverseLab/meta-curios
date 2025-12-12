@@ -1,3 +1,4 @@
+# This is a version of 2025-12-11
 DESCRIPTION = "Flight Software for CuRIOS-ED version 2.4"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
@@ -52,7 +53,7 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
     # Add file with version information to record the build information
-    echo "Image Version: ${IMAGE_VERSION}" >> ${D}/home/root/version_info.txt
+    echo "Image Version: 2025-12-11.1${IMAGE_VERSION}" >> ${D}/home/root/version_info.txt
 
     # Copy the health script to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
