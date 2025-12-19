@@ -20,15 +20,16 @@ inherit systemd
 #PR = "r1"
 LIC_FILES_CHKSUM = ""
 
-#SRC_URI = "file:///home/curios/curios_fsw/* file:///home/curios/inspiresat_config/*"
-#S = "${WORKDIR}/home/curios/curios_fsw"
-
 SRC_URI = "\
-    git://github.com/MovingUniverseLab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https;destsuffix=curios_fsw \
-    git://github.com/StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=https;destsuffix=inspiresat_config \
+    git://github.com/MovingUniverseLab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https;destsuffix=curios_fsw;name=repoCurios \
+    git://github.com/StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=https;destsuffix=inspiresat_config;name=repoInspiresat \
 "
 
-SRCREV_default = "${AUTOREV}"
+SRCREV_repoCurios = "${AUTOREV}"
+SRCREV_repoInspiresat = "${AUTOREV}"
+
+SRCREV_FORMAT = "_repoCurios_repoInspiresat"
+PV = "1.1.0+git${SRCPV}" 
 
 S = "${WORKDIR}/curios_fsw"
 
@@ -54,7 +55,7 @@ do_install:append () {
 
     # Add file with version information to record the build information
     #echo "Image Version: 2025-12-12.2${IMAGE_VERSION}" >> ${D}/home/root/version_info.txt
-    echo "Image Build Time: $(date)" > ${D}/home/root/version_info.txt
+    echo "Image Build Time: Series 10 $(date)" > ${D}/home/root/version_info.txt
 
     # Copy the health script to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
