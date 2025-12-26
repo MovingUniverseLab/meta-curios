@@ -18,6 +18,9 @@ inherit features_check
 inherit systemd
 
 #PR = "r1"
+PV = "1.1.0+git${SRCPV}"
+SRCREV = "${AUTOREV}"
+
 LIC_FILES_CHKSUM = ""
 
 SRC_URI = "\
