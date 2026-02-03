@@ -1,5 +1,5 @@
-# This is a version of 2025-12-13
-DESCRIPTION = "Flight Software for CuRIOS-ED version 3.0"
+# This is a version of 2026-01-18
+DESCRIPTION = "Flight Software for CuRIOS-ED version 3.1"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -16,9 +16,6 @@ inherit autotools-brokensep pkgconfig systemd
 
 inherit features_check
 inherit systemd
-
-#PV = "1.1.0+git${SRCPV}"
-#SRCREV = "${AUTOREV}"
 
 LIC_FILES_CHKSUM = ""
 
@@ -58,8 +55,7 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
     # Add file with version information to record the build information
-    #echo "Image Version: 2025-12-12.2${IMAGE_VERSION}" >> ${D}/home/root/version_info.txt
-    echo "Image Build Time: Series 10 $(date)" > ${D}/home/root/version_info.txt
+    echo "Image Build Time: Series 11 $(date)" > ${D}/home/root/version_info.txt
 
     # Copy the health script to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
