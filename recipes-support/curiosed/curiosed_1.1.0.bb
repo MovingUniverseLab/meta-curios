@@ -17,7 +17,6 @@ inherit autotools-brokensep pkgconfig systemd
 inherit features_check
 inherit systemd
 
-PR = "r1"
 #PV = "1.1.0+git${SRCPV}"
 #SRCREV = "${AUTOREV}"
 
@@ -33,6 +32,8 @@ SRCREV_repoInspiresat = "${AUTOREV}"
 
 SRCREV_FORMAT = "_repoCurios_repoInspiresat"
 PV = "1.1.0+git${SRCPV}" 
+
+PR = "r2"
 
 S = "${WORKDIR}/curios_fsw"
 
