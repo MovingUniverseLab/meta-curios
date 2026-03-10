@@ -1,5 +1,5 @@
-# This is a version of 2026-01-18
-DESCRIPTION = "Flight Software for CuRIOS-ED version 3.1"
+# This is a version of 2026-03-10
+DESCRIPTION = "Flight Software for CuRIOS-ED version 3.2"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -44,14 +44,6 @@ do_install:append () {
     install -d ${D}${bindir}
     install -d ${D}${libdir}
     install -d ${D}/data
-    install -d ${D}/data/Images
-    install -d ${D}/data/Logs
-    install -d ${D}/data/Icons
-    install -d ${D}/data/parameters
-    install -d ${D}/data/sources
-    install -d ${D}/data/working
-    install -d ${D}/data/Atik
-    install -d ${D}/data/Atik/AtikCamerasDLL
     install -d ${D}/home/root
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
@@ -74,10 +66,6 @@ do_install:append () {
     
     # Copy the journal clean script to the cron.daily directory
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/cron.daily/journal_clean.sh ${D}${sysconfdir}/cron.daily/
-
-    $ Link the Atik Debug file to the data disk to allow writing
-    ln -s /data/Atik/AtikCamerasDLL ${D}/home/root/.config/Atik/AtikCamerasDLL
-    cp ${WORKDIR}/curios_fst/files/q7s/home/root/DebugSetting.txt ${D}/data/Atik/AtikCamerasDLL/    
 
     # Install StarSpec config files
     cp -r ${WORKDIR}/inspiresat_config/* ${D}${sysconfdir}/inspiresat/
