@@ -47,14 +47,14 @@ do_install:append () {
     install -d ${D}/data/Images
     install -d ${D}/data/Icons
     install -d ${D}/data/Logs
+    install -d ${D}/data/Logs/Atik
     install -d ${D}/data/parameters
     install -d ${D}/data/sources
     install -d ${D}/data/working
-    install -d ${D}/data/Atik
-    install -d ${D}/data/Atik/AtikCamerasDLL
     install -d ${D}/home/root
     install -d ${D}/home/root/.config
     install -d ${D}/home/root/.config/Atik
+    install -d ${D}/home/root/.config/Atik/AtikCamerasDLL
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
     install -d ${D}${sysconfdir}/inspiresat
@@ -68,7 +68,8 @@ do_install:append () {
     echo "Image Build Time: Series 11 $(date)" > ${D}/home/root/version_info.txt
 
     # Add symbolic link for Atik debug files
-    ln -s /data/Atik/AtikCamerasDLL ${D}/home/root/.config/Atik/AtikCamerasDLL
+    ln -s /data/Logs/Atik ${D}/home/root/.config/Atik/AtikCamerasDLL/Debug
+    cp ${WORKDIR}/curios_fsw/files/q7s/home/root/DebugSettings.txt ${D}/home/root/.config/Atik/AtikCamerasDLL/
 
     # Copy the health script to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
