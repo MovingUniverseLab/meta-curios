@@ -44,6 +44,14 @@ do_install:append () {
     install -d ${D}${bindir}
     install -d ${D}${libdir}
     install -d ${D}/data
+    install -d ${D}/data/Images
+    install -d ${D}/data/Icons
+    install -d ${D}/data/Logs
+    install -d ${D}/data/parameters
+    install -d ${D}/data/sources
+    install -d ${D}/data/working
+    install -d ${D}/data/Atik
+    install -d ${D}/data/Atik/AtikCamerasDLL
     install -d ${D}/home/root
     install -d ${D}${sysconfdir}/systemd
     install -d ${D}${sysconfdir}/systemd/network
