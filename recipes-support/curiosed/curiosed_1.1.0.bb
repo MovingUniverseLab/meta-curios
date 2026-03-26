@@ -30,8 +30,6 @@ SRCREV_repoInspiresat = "${AUTOREV}"
 SRCREV_FORMAT = "_repoCurios_repoInspiresat"
 PV = "1.1.0+git${SRCPV}" 
 
-PR = "r2"
-
 S = "${WORKDIR}/curios_fsw"
 
 SYSTEMD_SERVICE:${PN} = "payload-control.service health-update-sh.service"
