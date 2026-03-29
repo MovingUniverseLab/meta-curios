@@ -29,6 +29,7 @@ SRCREV_repoInspiresat = "${AUTOREV}"
 
 SRCREV_FORMAT = "repoCurios_repoInspiresat"
 PV = "1.1.0+git${SRCPV}" 
+PRSERV_HOST = "localhost:0"
 
 S = "${WORKDIR}/curios_fsw"
 
