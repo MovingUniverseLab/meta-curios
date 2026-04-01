@@ -62,7 +62,7 @@ do_install:append () {
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
 
     # Add file with version information to record the build information
-    echo "Image Build Time: Series 11 $(date)" > ${D}/home/root/version_info.txt
+    echo "Image Build Time: $(date)" > ${D}/home/root/version_info.txt
 
     # Add symbolic link for Atik debug files
     ln -s /data/Logs/Atik ${D}/home/root/.config/Atik/AtikCamerasDLL
