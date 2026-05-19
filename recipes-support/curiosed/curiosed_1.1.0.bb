@@ -1,5 +1,5 @@
-# This is a version of 2026-03-10
-DESCRIPTION = "Flight Software for CuRIOS-ED version 3.2"
+# This is a version of 2026-05-19
+DESCRIPTION = "Flight Software for CuRIOS-ED version 4.0"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
 
@@ -32,7 +32,7 @@ PV = "1.1.0+git${SRCPV}"
 
 S = "${WORKDIR}/curios_fsw"
 
-SYSTEMD_SERVICE:${PN} = "payload-control.service health-update-sh.service"
+SYSTEMD_SERVICE:${PN} = " xiphos-startup.service payload-control.service health-update-sh.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 inherit cmake
@@ -67,8 +67,9 @@ do_install:append () {
     # Add symbolic link for Atik debug files
     ln -s /data/Logs/Atik ${D}/home/root/.config/Atik/AtikCamerasDLL
 
-    # Copy the health script to /usr/bin
+    # Copy the health and startup scripts to /usr/bin
     install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
+    install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/xiphos_startup.sh ${D}${bindir}
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
@@ -86,6 +87,7 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/payload-control.service ${D}${sysconfdir}/systemd/system/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/curios-start.service ${D}${sysconfdir}/systemd/system/
 }
 
 FILES:${PN} += " \
