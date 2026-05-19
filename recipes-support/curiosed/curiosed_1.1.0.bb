@@ -87,7 +87,7 @@ do_install:append () {
     install -d ${D}${sysconfdir}/systemd/system
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/payload-control.service ${D}${sysconfdir}/systemd/system/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/health-update-sh.service ${D}${sysconfdir}/systemd/system/    
-    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/curios-start.service ${D}${sysconfdir}/systemd/system/
+    install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/xiphoss-startup.service ${D}${sysconfdir}/systemd/system/
 }
 
 FILES:${PN} += " \
