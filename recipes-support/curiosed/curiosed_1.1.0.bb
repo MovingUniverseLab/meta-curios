@@ -57,6 +57,8 @@ do_install:append () {
     install -d ${D}${sysconfdir}/inspiresat
     install -d ${D}${sysconfdir}/flightsim
     install -d ${D}${sysconfdir}/cron.daily
+    install -d ${D}${sysconfdir}/etc
+    install -d ${D}${sysconfdir}/etc/profile.d
 
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
@@ -72,11 +74,11 @@ do_install:append () {
     #install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/xiphos_startup.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/Health_Update.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/xiphos_startup.sh ${D}${bindir}
-    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/profile.d/aliases.sh ${D}/etc/profile.d/
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
     install -m 0644 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/network/05-eth0.network ${D}${sysconfdir}/systemd/network/
+    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/profile.d/aliases.sh ${D}${sysconfdir}/etc/profile.d/
     
     # Copy the journal clean script to the cron.daily directory
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/cron.daily/journal_clean.sh ${D}${sysconfdir}/cron.daily/
