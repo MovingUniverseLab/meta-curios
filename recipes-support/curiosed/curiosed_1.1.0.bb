@@ -72,6 +72,7 @@ do_install:append () {
     #install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/xiphos_startup.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/Health_Update.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/xiphos_startup.sh ${D}${bindir}
+    install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/profile.d/aliases.sh ${D}/etc/profile.d/
 
     # Move over rootfs files
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/home/root/.profile ${D}/home/root/
