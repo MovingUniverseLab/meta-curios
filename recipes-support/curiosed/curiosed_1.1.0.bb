@@ -70,8 +70,6 @@ do_install:append () {
     ln -s /data/Logs/Atik ${D}/home/root/.config/Atik/AtikCamerasDLL
 
     # Copy the health and startup scripts to /usr/bin. Note we moved the two critical files to the service directory
-    #install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/Health_Update.sh ${D}${bindir}
-    #install -m 0755 ${WORKDIR}/curios_fsw/src/system_scripts/xiphos_startup.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/Health_Update.sh ${D}${bindir}
     install -m 0755 ${WORKDIR}/curios_fsw/files/q7s/etc/systemd/system/xiphos_startup.sh ${D}${bindir}
 
