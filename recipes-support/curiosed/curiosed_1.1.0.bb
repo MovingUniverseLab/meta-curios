@@ -18,8 +18,8 @@ inherit cmake pkgconfig systemd
 LIC_FILES_CHKSUM = ""
 
 SRC_URI = "\
-    git://github.com/MovingUniverseLab/curios_fsw.git;branch=Steve_CuRIOS;protocol=https;destsuffix=curios_fsw;name=repoCurios \
-    git://github.com/StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=https;destsuffix=inspiresat_config;name=repoInspiresat \
+    git://github.com/MovingUniverseLab/curios_fsw.git;branch=Steve_dev;protocol=ssh;destsuffix=curios_fsw;name=repoCurios \
+    git://github.com/StarSpec-Technologies/inspiresat_config.git;branch=master;protocol=ssh;destsuffix=inspiresat_config;name=repoInspiresat \
 "
 
 SRCREV_repoCurios = "${AUTOREV}"
