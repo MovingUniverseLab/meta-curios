@@ -1,4 +1,4 @@
-# This is a version of 2026-05-19
+# This is version 3.0 of 2026-07-11
 DESCRIPTION = "Flight Software for CuRIOS-ED version 4.1"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
