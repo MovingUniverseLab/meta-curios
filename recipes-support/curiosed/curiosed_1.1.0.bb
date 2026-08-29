@@ -1,4 +1,4 @@
-# This is version 3.0 of 2026-07-11
+# This is version 3.01 of 2026-08-29
 DESCRIPTION = "Flight Software for CuRIOS-ED version 4.1"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
@@ -59,6 +59,7 @@ do_install:append() {
 
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libatikcameras.so ${D}${libdir}
     install -m 0755 ${WORKDIR}/curios_fsw/lib/libflightapi.a ${D}${libdir}
+    install -m 0755 ${WORKDIR}/curios_fsw/lib/libcfitsio_jpegls.so.10 ${D}${libdir}
 
     # Add file with version information to record the build information
     echo "Image Build Time: $(date)" > ${D}/home/root/version_info.txt
