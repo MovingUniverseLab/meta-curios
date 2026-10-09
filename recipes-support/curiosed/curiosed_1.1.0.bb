@@ -1,4 +1,4 @@
-# This is version 3.01 of 2026-08-29
+# This is version 3.02 of 2026-10-08
 DESCRIPTION = "Flight Software for CuRIOS-ED version 4.1"
 HOMEPAGE = ""
 LICENSE = "CLOSED"
@@ -42,6 +42,7 @@ do_install:append() {
     install -d ${D}/data/Images
     install -d ${D}/data/Icons
     install -d ${D}/data/Logs
+    install -d ${D}/data/Catalogs
     install -d ${D}/data/Logs/Atik
     install -d ${D}/data/parameters
     install -d ${D}/data/sources
